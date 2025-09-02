@@ -1,0 +1,27 @@
+body {
+    background-color: rgb(211, 225, 220);
+}
+
+.heading {
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    height: 100px;
+    width: 500px;
+    border-style: none;
+    margin: auto;
+    font-size:9ch;
+}
+
+.leaderboard_title {
+    background-color: transparent;
+    border-style: none;
+    margin: auto;
+    align-self: auto;
+    font-size:1ch;
+}
+
+.leaderboard_title:hover {
+    border-style: dotted;
+    border-color: brown;
+}
