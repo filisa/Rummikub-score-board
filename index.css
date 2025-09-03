@@ -6,7 +6,7 @@ body {
     background-color: white;
     border-radius: 10px;
     text-align: center;
-    height: 100px;
+    height: 200px;
     width: 500px;
     border-style: none;
     margin: auto;
@@ -15,13 +15,40 @@ body {
 
 .leaderboard_title {
     background-color: transparent;
-    border-style: none;
-    margin: auto;
-    align-self: auto;
-    font-size:1ch;
+    border-style: none; 
+    font-size: 35px;
+    height: 100px;
+    width: 300px;
+
 }
 
 .leaderboard_title:hover {
-    border-style: dotted;
-    border-color: brown;
+    border-style: double;
+    border-color: rgb(52, 138, 136);
+    border-radius: 10px;
+}
+
+.change_name {
+    background-color: transparent;
+    border-style: none;
+    align-self: auto;
+    font-size: 35px;
+    display: none;
+    border-color: transparent;
+}
+.leaderboard_title_change {
+    height: 100px;
+    width: 200px;
+    border-color: transparent;
+    font-size: 25px;
+    padding: 0px;
+    padding-inline: 10px;
+}
+
+.ok_change_btn {
+    background-color: aliceblue;
+    border-radius: 15px;
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
 }
