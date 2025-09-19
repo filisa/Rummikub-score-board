@@ -1,12 +1,13 @@
 body {
     background-color: rgb(211, 225, 220);
+    color:rgb(77, 78, 79)
 }
 
 .heading {
     background-color: white;
     border-radius: 10px;
     text-align: center;
-    height: 200px;
+    height: 100px;
     width: 500px;
     border-style: none;
     margin: auto;
@@ -50,5 +51,30 @@ body {
     border-radius: 15px;
     height: 40px;
     width: 40px;
+    font-size: 20px;
+}
+
+.error {
+    display: none;
+    font-size: 15px;
+}
+
+.contestant_empty_state {
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    height: 200px;
+    width: 500px;
+    border-style: none;
+    margin: auto;
+    font-size:25px;
+    padding-top: 10px;
+}
+
+.add_people_btn {
+    background-color: aliceblue;
+    border-radius: 15px;
+    height: 40px;
+    width: 150px;
     font-size: 20px;
 }
