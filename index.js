@@ -25,7 +25,9 @@ const addNewContestantOkBtn = document.getElementById("add_new_contestant_ok_btn
 const addContestantOverlay = document.getElementById("add_contestant_overlay")
 const contestantList = document.getElementById("contestant_list")
 
+
 let contestants = []
+
 
 boardName.addEventListener('click', function(){
     boardName.style.display = 'none'
@@ -41,10 +43,9 @@ okChangeBtn.addEventListener('click', function(){
     if (inputChangeName.value) {
         error.style.display = 'none'
         boardName.textContent = inputChangeName.value
+        let newName = inputChangeName.value
         changeName.style.display = 'none'
         boardName.style.display = 'inline'
-        console.log(localStorage.setItem("name", JSON.stringify(contestants)))
-        console.log( localStorage.getItem("name") )
     } else {    
         errorMessage()
     }
@@ -67,7 +68,7 @@ addNewContestantOkBtn.addEventListener('click', function() {
 function renderContestants() {
     let listContestants = ""
     for (let i = 0; i < contestants.length; i++) {
-        listContestants += "<li>" + contestants[i] + "</li>" + "<button>" + "+1" + "</button>"
+        listContestants += "<li>" + "<div>" + contestants[i] + "<button>" + "+1" + "</button>" + "</div>" + "<div>" + "</div>" + "</li>" 
     }
     contestantList.innerHTML = listContestants
     push(referenceInDb, addContestantOverlayInputName.value)

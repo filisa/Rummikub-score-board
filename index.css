@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(211, 225, 220);
+    background-color: rgb(191, 192, 194);
     color:rgb(77, 78, 79);  
 }
 
@@ -99,4 +99,10 @@ body {
     width: 550px;
     height: 100px;
     font-size: 22px;
+}
+
+ul {
+    list-style-type: none;
+    margin-left: 40%;
+    font-size: 30px;
 }
