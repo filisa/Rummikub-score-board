@@ -4,14 +4,39 @@
     <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-    <div id = "title" class = "heading">
-        <button class = "leaderboard_title" id = "leaderboard_title"> My leaderboard </button>
-        <div class = "change_name" id = "change_board_name"> 
-            <input placeholder = "Enter new name"  id = "leaderboard_title_change" 
-            name= "leaderboard_title_change" class = "leaderboard_title_change" >
-            <button class = "ok_change_btn" id = "ok_change_btn">ok</button>
+    <div 
+        id = "title" 
+        class = "heading"
+    >
+        <button 
+            class = "leaderboard_title" 
+            id = "leaderboard_title"> 
+            My leaderboard
+        </button>
+        <button class = "add_people_btn" id="add_people_btn">Add people</button>
+        <div 
+            class = "change_name" 
+            id = "change_board_name"> 
+            <input 
+                placeholder = "Enter new name"  
+                id = "leaderboard_title_change" 
+                name= "leaderboard_title_change" 
+                class = "leaderboard_title_change" 
+            >
+            <button 
+                class = "ok_change_btn" 
+                id = "ok_change_btn"
+            >
+            ok
+            </button>
         </div>
-        <p id="error" class="error">enter smth</p>
+
+        <p 
+            id = "error" 
+            class = "error"
+        >
+        enter smth
+        </p>
         <!-- <input 
             placeholder = "My leaderboard" 
             class = "leaderboard_title"
@@ -23,9 +48,32 @@
     </div>
     <div class = "contestant_empty_state" id = "contestant_empty_state">
         <p>This board has no participants</p>
-        <button class = "add_people_btn" id="add_people_btn">Add people</button>
     </div>
     <div class = "contestant_card" id = "contestant_card"></div>
-    <script src="index.js"></script>
+    <div>
+        <ul id="contestant_list">
+            <li></li>
+        </ul>
+    </div>
+    <div 
+        id= "add_contestant_overlay" 
+        class="add_contestant_overlay"
+        >
+            <p>Enter a name</p>
+            <input 
+                type = "text" 
+                placeholder = "Name"
+                id = "add_contestant_overlay_input_name"
+                name = "add_contestant_overlay_input_name"
+                class = "input_name"
+                autofocus
+            >
+            <button 
+                id = "add_new_contestant_ok_btn" 
+                class="add_people_btn"
+            > OK
+            </button>
+    </div>
+    <script type = "module" src = "index.js"></script>
 </body>
 </html>

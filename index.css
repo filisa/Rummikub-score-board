@@ -1,6 +1,6 @@
 body {
     background-color: rgb(211, 225, 220);
-    color:rgb(77, 78, 79)
+    color:rgb(77, 78, 79);  
 }
 
 .heading {
@@ -11,7 +11,7 @@ body {
     width: 500px;
     border-style: none;
     margin: auto;
-    font-size:9ch;
+    font-size: 9ch;
 }
 
 .leaderboard_title {
@@ -38,7 +38,7 @@ body {
     border-color: transparent;
 }
 .leaderboard_title_change {
-    height: 100px;
+    height: 50px;
     width: 200px;
     border-color: transparent;
     font-size: 25px;
@@ -77,4 +77,26 @@ body {
     height: 40px;
     width: 150px;
     font-size: 20px;
+}
+.add_contestant_overlay {
+  position: fixed;
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+  text-align: center;
+  color: rgb(230, 226, 226);
+  font-size: 20px;
+  display: none;
+}
+
+.input_name {
+    width: 550px;
+    height: 100px;
+    font-size: 22px;
 }
