@@ -4,30 +4,46 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js"   
 import { getDatabase, 
          ref,
-         push } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-database.js"   
+         push,
+         onValue } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-database.js"   
 
 const firebaseConfig = {
     databaseURL: "https://score-board-d772e-default-rtdb.europe-west1.firebasedatabase.app/"
 }
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app)
-const referenceInDb = ref(database, "contestants")
+const contestantsInDb = ref(database, "contestants")
+const boardNameInDb = ref(database, "boardName")
 
 const boardName = document.getElementById("leaderboard_title")
 const changeName = document.getElementById("change_board_name")
 const okChangeBtn = document.getElementById("ok_change_btn")
 const inputChangeName = document.getElementById("leaderboard_title_change")
-const error = document.getElementById("error")
 const addPeopleBtn = document.getElementById("add_people_btn")
 const contestantEmptyState = document.getElementById("contestant_empty_state")
 const addContestantOverlayInputName = document.getElementById("add_contestant_overlay_input_name")
 const addNewContestantOkBtn = document.getElementById("add_new_contestant_ok_btn")
 const addContestantOverlay = document.getElementById("add_contestant_overlay")
 const contestantList = document.getElementById("contestant_list")
-
+const customBoardName = JSON.parse( localStorage.getItem("newName") )
+const contestantsFromLocalStorage = JSON.parse( localStorage.getItem("contestantsList") )
 
 let contestants = []
 
+if (customBoardName) {
+    boardName.textContent = customBoardName
+} else if (boardNameInDb) {
+    boardName.textContent = boardNameInDb
+} {
+    boardName.textContent = "My leaderboard"
+    }
+
+if (contestantsFromLocalStorage) {
+    contestantEmptyState.style.display = 'none'
+    contestantList.innerHTML = contestantsFromLocalStorage
+    contestants = contestantsFromLocalStorage
+    renderContestants()
+}
 
 boardName.addEventListener('click', function(){
     boardName.style.display = 'none'
@@ -35,19 +51,17 @@ boardName.addEventListener('click', function(){
     inputChangeName.focus()
 })
 
-function errorMessage(){
-    error.style.display = 'inline'
-    error.style.color = 'red'
-}
 okChangeBtn.addEventListener('click', function(){
     if (inputChangeName.value) {
-        error.style.display = 'none'
         boardName.textContent = inputChangeName.value
-        let newName = inputChangeName.value
         changeName.style.display = 'none'
         boardName.style.display = 'inline'
-    } else {    
-        errorMessage()
+        localStorage.setItem("newName", JSON.stringify(inputChangeName.value))
+        push(boardNameInDb, inputChangeName.value)
+    } else {
+        changeName.style.display = 'none'
+        boardName.style.display = 'inline'    
+        boardName.textContent = "My leaderboard"
     }
 })
 
@@ -60,19 +74,31 @@ addNewContestantOkBtn.addEventListener('click', function() {
     if (addContestantOverlayInputName.value) {
         addContestantOverlay.style.display = 'none';
         contestants.push(addContestantOverlayInputName.value)
+        localStorage.setItem("contestantsList", JSON.stringify(contestants) )
+        push(contestantsInDb, addContestantOverlayInputName.value)
         renderContestants()
         addContestantOverlayInputName.value = ""
-    } else {console.log("There is an error adding a new contestant")}
+    } else {
+        addContestantOverlay.style.display = 'none'
+    }
 })
 
 function renderContestants() {
     let listContestants = ""
     for (let i = 0; i < contestants.length; i++) {
-        listContestants += "<li>" + "<div>" + contestants[i] + "<button>" + "+1" + "</button>" + "</div>" + "<div>" + "</div>" + "</li>" 
+        listContestants += `
+                            <li> 
+                            ${contestants[i]} 
+                            </li>
+                            `
     }
     contestantList.innerHTML = listContestants
-    push(referenceInDb, addContestantOverlayInputName.value)
 }
-addContestantOverlayInputName.value
+//addContestantOverlayInputName.value
 //local storage stil doesn't work yet! fix
-//make an option ok only works if you entered something.
+//make an option ok only works if you entered something.1
+
+
+onValue(contestantsInDb, function(snapshot) {
+    console.log(snapshot.val())
+})

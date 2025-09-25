@@ -30,20 +30,7 @@
             </button>
         </div>
 
-        <p 
-            id = "error" 
-            class = "error"
-        >
-        enter smth
-        </p>
-        <!-- <input 
-            placeholder = "My leaderboard" 
-            class = "leaderboard_title"
-            id = "leaderboard_title" 
-            name= "leaderboard_title" 
-            type= "text" 
-            autofocus
-        > -->
+        
     </div>
     <div id = "add_people" class = "heading"> 
         <button class = "add_people_btn" id="add_people_btn">Add people</button>
@@ -52,11 +39,20 @@
         <p>This board has no participants</p>
     </div>
     <div class = "contestant_card" id = "contestant_card"></div>
+
     <div>
         <ul id="contestant_list">
-            <li></li>
+            <template id = "contestant_template">
+                <li class = "contestant_card"> 
+                    <div class="contestant_name">
+                        <span class="name_text"></span>
+                        <button class="plus_one_btn">+1</button>
+                    </div>
+                </li>
+            </template>
         </ul>
     </div>
+
     <div 
         id= "add_contestant_overlay" 
         class="add_contestant_overlay"

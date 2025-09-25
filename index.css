@@ -54,11 +54,6 @@ body {
     font-size: 20px;
 }
 
-.error {
-    display: none;
-    font-size: 15px;
-}
-
 .contestant_empty_state {
     background-color: white;
     border-radius: 10px;
