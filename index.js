@@ -27,9 +27,11 @@ const addContestantOverlay = document.getElementById("add_contestant_overlay")
 const contestantList = document.getElementById("contestant_list")
 const customBoardName = JSON.parse( localStorage.getItem("newName") )
 const contestantsFromLocalStorage = JSON.parse( localStorage.getItem("contestantsList") )
+const name = document.getElementById("name_text")
 
 let contestants = []
 
+renderContestants()
 if (customBoardName) {
     boardName.textContent = customBoardName
 } else if (boardNameInDb) {
@@ -40,10 +42,10 @@ if (customBoardName) {
 
 if (contestantsFromLocalStorage) {
     contestantEmptyState.style.display = 'none'
-    contestantList.innerHTML = contestantsFromLocalStorage
     contestants = contestantsFromLocalStorage
     renderContestants()
 }
+name.textContent = "contestants"
 
 boardName.addEventListener('click', function(){
     boardName.style.display = 'none'
@@ -102,3 +104,11 @@ function renderContestants() {
 onValue(contestantsInDb, function(snapshot) {
     console.log(snapshot.val())
 })
+
+const contestant = {name: "", score: "0"}
+contestant.name = addContestantOverlayInputName.value
+
+function renderMyObject() {
+    contestantList.innerHTML = contestant.name + " " + contestant.score
+}
+renderMyObject()
